@@ -1,0 +1,56 @@
+.card {
+  width: 364px;
+  height: 271px;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  transition: all 0.4s ease;
+}
+
+.card__info {
+  height: 68px;
+  display: grid;
+  grid-template-columns: auto 44px;
+  grid-template-areas:
+  "title icon"
+  "timing icon";
+}
+
+.card__title {
+  grid-area: title;
+  margin: 0;
+  padding: 0;
+  font-weight: 500;
+  font-size: 15px;
+  line-height: 18px;
+  color: #FFFFFF;
+}
+
+.card__timing {
+  grid-area: timing;
+  margin: 0;
+  padding: 0;
+  font-size: 11px;
+  line-height: 13px;
+  display: flex;
+  align-items: center;
+  color: #8B8B8B;
+}
+
+.card__icon-img {
+  grid-area: icon;
+}
+
+@media screen and (max-width: 1120px) {
+  .card {
+    width: 339px;
+    height: 258px;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .card {
+    width: 300px;
+    height: 236px;
+  }
+}

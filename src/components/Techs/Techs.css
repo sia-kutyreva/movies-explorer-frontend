@@ -1,0 +1,140 @@
+.techs {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 100px 70px 100px 70px;
+  background-color: #272727;
+}
+
+.techs__title {
+  font-size: 22px;
+  line-height: 27px;
+  color: #FFFFFF;
+  padding-bottom: 23px;
+  border-bottom: 1px solid #DADADA;
+  margin: 0;
+}
+
+.techs__container {
+  color: #FFFFFF;
+  padding: 90px 0 0 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: all 0.3s linear;
+}
+
+.techs__subtitle {
+  font-size: 50px;
+  line-height: 58px;
+  text-align: center;
+  padding-bottom: 26px;
+  margin: 0;
+  transition: all 0.3s linear;
+}
+
+.techs__text {
+  max-width: 460px;
+  font-size: 14px;
+  line-height: 20px;
+  text-align: center;
+  margin: 0 0 100px 0;
+  transition: all 0.3s linear;
+}
+
+.techs__list {
+  margin: 0 auto;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  column-gap: 10px;
+  list-style: none;
+  transition: all 0.5s linear;
+}
+
+.techs__list-element {
+  min-width: 90px;
+  max-height: 60px;
+  padding: 22px 0;
+  border-radius: 10px;
+  text-align: center;
+  cursor: pointer;
+  background-color: #303030;
+  font-size: 14px;
+  line-height: 17px;
+  transition: all 0.5s linear;
+}
+
+.techs__list-element:hover {
+  transform: scale(1.2);
+  background-color: #4d4d4d;
+}
+
+.techs__list-element:last-child {
+  margin: 0;
+}
+
+@media screen and (max-width: 850px) {
+  .techs {
+    padding: 90px 50px 90px 50px;
+  }
+
+  .techs__subtitle {
+    padding-bottom: 22px;
+  }
+
+  .techs__container {
+    padding: 80px 0 0 0;
+  }
+
+  .techs__text {
+    margin: 0 0 83px 0;
+  }
+}
+
+@media screen and (max-width: 820px) {
+  .techs__list {
+    grid-template-columns: repeat(2, 1fr);
+    row-gap: 8px;
+    transition: all 0.5s linear;
+  }
+}
+
+@media screen and (max-width: 640px) {
+  .techs__list-element {
+    min-width: 84px;
+    max-height: 57px;
+    font-size: 12px;
+    line-height: 15px;
+    transition: all 0.5s linear;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .techs {
+    padding: 70px 18px 70px 18px;
+    background-color: #202020;
+  }
+  
+  .techs__subtitle {
+    font-size: 30px;
+    line-height: 36px;
+    transition: all 0.3s linear;
+    padding-bottom: 24px;
+  }
+  
+  .techs__text {
+    max-width: 292px;
+    font-size: 11px;
+    line-height: 16px;
+    margin-bottom: 50px;
+    transition: all 0.3s linear;
+  }
+
+  .techs__title {
+    font-size: 18px;
+    line-height: 22px;
+    letter-spacing: -0.04em;
+    border-bottom: 1px solid #000000;;
+    padding-bottom: 28px;
+  }
+}

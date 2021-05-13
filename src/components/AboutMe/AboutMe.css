@@ -1,0 +1,168 @@
+.about-me {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 110px 70px 100px 70px;
+}
+
+.about-me__container {
+  padding-top: 66px;
+  color: #FFFFFF;
+  display: grid;
+  grid-template-columns: auto 270px;
+  grid-column-gap: 49px;
+  grid-template-areas:
+  "name foto"
+  "profession foto"
+  "text foto"
+  "links foto";
+}
+
+.about-me__name {
+  margin: 0 0 18px 0;
+  font-size: 50px;
+  line-height: 58px;
+  letter-spacing: -0.04em;
+  grid-area: name;
+  transition: all 0.5s ease;
+}
+
+.about-me__profession {
+  margin: 0 0 26px 0;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 20px;
+  grid-area: profession;
+  transition: all 0.5s ease;
+}
+
+.about-me__text {
+  margin: 0 0 18px 0;
+  max-width: 590px;
+  font-size: 14px;
+  line-height: 22px;
+  grid-area: text;
+  transition: all 0.5s ease;
+}
+
+.about-me__links {
+  height: min-content;
+  grid-area: links;
+  align-self: end;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  transition: all 0.5s ease;
+}
+
+.about-me__link-item {
+  text-decoration: none;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 17px;
+  color: #FFFFFF;
+  opacity: 1;
+  transition: all 0.3s ease;
+}
+
+.about-me__link-item:hover {
+  opacity: 0.7;
+}
+
+.about-me__foto {
+  border-radius: 11px;
+  grid-area: foto;
+  transition: all 0.5s ease;
+}
+
+@media screen and (max-width: 768px) {
+  .about-me {
+    padding: 90px 50px 90px 50px;
+  }
+
+  .about-me__container {
+    grid-template-columns: auto 255px;
+  }
+
+  .about-me__name {
+    font-size: 40px;
+    line-height: 40px;
+  }
+
+  .about-me__profession {
+    font-size: 12px;
+    line-height: 18px;
+  }
+  
+  .about-me__text {
+    max-width: 363px;
+    font-size: 12px;
+    line-height: 18px;
+  }
+
+  .about-me__link-item {
+    font-size: 14px;
+    line-height: 17px;
+  }
+
+  .about-me__foto {
+    width: 255px;
+  }
+}
+
+@media screen and (max-width: 660px) {
+  .about-me__container {
+    padding-top: 60px;
+    grid-template-columns: 1fr;
+    grid-column-gap: 49px;
+    grid-template-areas:
+      "foto"
+      "name"
+      "profession"
+      "text"
+      "links";
+  }
+
+  .about-me__name {
+    margin: 0 0 20px 0;
+  }
+
+  .about-me__profession {
+    margin: 0 0 20px 0;
+  }
+  
+  .about-me__text {
+    margin: 0 0 40px 0;
+  }
+
+  .about-me__foto {
+    margin: 0 auto 40px;
+    width: 292px;
+  }
+}
+
+@media screen and (max-width: 450px) {
+  .about-me {
+    padding: 60px 14px 70px 14px;
+  }
+
+  .about-me__name {
+    font-size: 30px;
+    line-height: 36px;
+  }
+
+  .about-me__profession {
+    font-size: 11px;
+    line-height: 16px;
+  }
+  
+  .about-me__text {
+    font-size: 11px;
+    line-height: 16px;
+  }
+
+  .about-me__link-item {
+    font-size: 14px;
+    line-height: 17px;
+  }
+}
