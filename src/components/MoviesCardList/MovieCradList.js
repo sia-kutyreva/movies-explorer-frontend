@@ -1,38 +1,30 @@
 import React from 'react';
 import './MovieCardList.css';
 import MovieCard from '../MoviesCard/MovieCard';
-import Preloader from '../Preloader/Preloader';
 
 function MovieCardList({
-  savedMoviesArray,
-  initialMoviesArray,
-  setIsLoading,
-  isLoading
+  moviesArray,
+  isMovieSaved,
+  onSavedMovie,
+  removeMovie,
+  isSavedArray,
+  savedMovies
 }) 
 {
-
-  const savedMoviePage = savedMoviesArray ? true : false;
 
   return (
     <div className="section-movies page__section-movies_path_movie">
       <ul className="movies-list">
-        { isLoading ? ( <Preloader /> ) :
-          (savedMoviePage ? (
-            savedMoviesArray.map((movie) => (
+        {moviesArray.map((movie) => (
               <MovieCard 
-                key={movie._id}
+                key={isSavedArray ? movie._id : movie.movieId}
                 movie={movie}
+                isMovieSaved={isMovieSaved}
+                onSavedMovie={onSavedMovie}
+                removeMovie={removeMovie}
+                savedMovies={savedMovies}
               />
-            ))
-          ) : (
-            initialMoviesArray.map((movie, i) => (
-              <MovieCard 
-                key={i}
-                movie={movie}
-              />
-            ))
-          ))
-        }
+            ))}
       </ul>
     </div>
   );

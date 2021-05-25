@@ -1,3 +1,7 @@
+.navigation {
+  height: 39px;
+}
+
 .navigation__container {
   display: flex;
   justify-content: space-between;

@@ -16,6 +16,7 @@ function Main(props)
       <Header 
         mobileMenu={props.mobileMenu}
         clickMenu={props.clickMenu}
+        loggedIn={props.loggedIn}
       />
       <SideBar 
         isOpen={props.isOpen}

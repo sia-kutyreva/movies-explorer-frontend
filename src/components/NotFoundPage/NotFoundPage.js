@@ -3,9 +3,13 @@ import './NotFoundPage.css';
 import Button from '../Button/Button';
 
 function NotFoundPage({
-  onClick
-}) 
-{
+  history
+}) {
+
+  const goBack= () => {
+    history.goBack();
+  }
+
   return (
     <main className="not-found">
       <div className="not-found__container">
@@ -15,7 +19,7 @@ function NotFoundPage({
       <Button 
         buttonClassName="button_not-found" 
         buttonText="Назад"
-        onClick={onClick} 
+        onClick={goBack} 
       />
     </main>
   );

@@ -1,26 +1,25 @@
-import React from "react";
+import React, { useEffect } from "react";
 import './Login.css';
 import PageWithForm from '../PageWithForm/PageWithForm';
+import { useFormWithValidation } from '../../utils/useFormHook';
 
-function Register(props) {
+function Login({
+  onLogin,
+  handleLoginErrors,
+  loginErrors,
+}) {
 
+  const { values, handleChange, errors, isValid, resetForm } = useFormWithValidation();
 
-  const [email, setEmail] = React.useState('');
-  const [password, setPassword] = React.useState('');
+  const handleSubmit = (evt) => {
+    evt.preventDefault();
+    onLogin(values);
+    resetForm();
+  }
 
-  const handleChangeEmail = (e) => {
-    setEmail(e.target.value);
-    //setErrors([{ key: "email", value: false }]);
-  };
-
-  const handleChangePassword = (e) => {
-    setPassword(e.target.value);
-    //setErrors([{ key: "password", value: false }]);
-  };
-
-  const handleSubmit = (e) => {
-    e.prevent.default();
-  };
+  useEffect(()=> {
+    handleLoginErrors('');
+  }, [values])
 
   return (
     <PageWithForm 
@@ -35,35 +34,36 @@ function Register(props) {
       authText="Ещё не зарегистрированы?"
       authLink="Регистрация"
       path="/signup"
+      isValid={isValid}
+      apiErrors={loginErrors}
     >
       <fieldset className="form-page__fieldset">
         <label className="form-page__label">E-mail</label>
-        <input className="form-page__input" 
+        <input className={`form-page__input ${errors.email ? 'form-page__input-error_active' : ''}`} 
             name="email" 
             id="user-email"
             type="email"
-            autoComplete="on"
-            onChange={handleChangeEmail}
-            value={email || ""}
+            autoComplete="off"
+            onChange={handleChange}
+            value={values.email || ""}
             required
         />
-        <span className='form-page__input-error form-page__input-error_active' id='email-input-error'></span>
+        <span className='form-page__input-error form-page__input-error_active' id='email-input-error'>{errors.email}</span>
         <label className="form-page__label">Пароль</label>
-        <input className="form-page__input" 
+        <input className={`form-page__input ${errors.password ? 'form-page__input-error_active' : ''}`} 
             name="password"
             id="user-password"
             type="password"
-            min="6"
-            autoComplete="on"
-            onChange={handleChangePassword}
-            value={password || ""}
+            autoComplete="off"
+            onChange={handleChange}
+            value={values.password || ""}
             required
         />
-        <span className='form-page__input-error form-page__input-error_active' id='password-input-error'></span>
+        <span className='form-page__input-error form-page__input-error_active' id='password-input-error'>{errors.password}</span>
       </fieldset>
     </PageWithForm>
   )
   
 }
 
-export default Register;
+export default Login;

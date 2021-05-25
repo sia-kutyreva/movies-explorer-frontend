@@ -16,20 +16,23 @@ function PageWithForm({
   text,
   authText,
   authLink,
-  path
+  path,
+  isValid,
+  apiErrors,
 }) 
 {
-//<h2 className={`form-page__${text}`}>Уже зарегистрированы? <Link to="/" className={`form-page__${link}`}>Войти</Link></h2>
   return (
     <main className={`form-page form-page_${name}`}>
       <Logo />
       <h1 className="form-page__title">{title}</h1>
-      <form className="form-page__form" onSubmit={onSubmit} id={`popup-form-${name}`} autoComplete="on" name={`popup-form-${name}`}>
+      <form className="form-page__form" onSubmit={onSubmit} id={`popup-form-${name}`} autoComplete="on" name={`popup-form-${name}`} noValidate>
           {children}
+        <span className='form-page__form-error' id='name-input-error'>{apiErrors || ''}</span>
         <Button 
           buttonClassName={buttonClassName}
           type={buttonType}
           buttonText={buttonText}
+          isDisabled={!isValid}
         />
       </form>
       <h2 className={`form-page__${text}`}>{authText}<Link to={path} className={`form-page__${link}`}>{authLink}</Link></h2>

@@ -82,11 +82,23 @@
   border: none;
 }
 
+.profile__input-error_active {
+  color: #FF004C;
+}
+
+.profile__input:active {
+  background-color: inherit;
+}
+
 .profile__update-error {
   font-size: 11px;
   line-height: 13px;
   text-align: center;
   color: #FF004C;
+}
+
+.profile__label-error_active {
+  margin-bottom: 7px;
 }
 
 @media screen and (max-width: 800px) {
