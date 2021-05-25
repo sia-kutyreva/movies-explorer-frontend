@@ -1,0 +1,142 @@
+.about-project {
+  width: 93.75%;
+  box-sizing: border-box;
+  padding: 110px 30px 110px 30px;
+}
+
+.about-project__title {
+  font-size: 22px;
+  line-height: 27px;
+  color: #FFFFFF;
+  margin: 0;
+  padding-bottom: 23px;
+  border-bottom: solid #DADADA 1px;
+}
+
+.about-project__table {
+  padding: 70px 0 110px 0;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  column-gap: 40px;
+  list-style: none;
+  margin: 0;
+}
+
+.about-project__table-header {
+  text-align: left;
+  font-size: 20px;
+  line-height: 24px;
+  letter-spacing: -0.04em;
+  color: #FFFFFF;
+}
+
+.about-project__table-element {
+  padding-top: 26px;
+  font-size: 14px;
+  line-height: 20px;
+  color: #FFFFFF;
+  margin: 0;
+}
+
+.about-project__diagram {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 228px auto;
+  list-style: none;
+  text-align: center;
+}
+
+.about-project__diagram-element {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-top: 14px;
+  margin: 0;
+  font-family: 'Suisse Intl';
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 17px;
+  color: #8B8B8B;
+}
+
+.about-project__diagram-element_green {
+  max-width: 228px;
+  height: 36px;
+  background-color: #3DDC84;
+  font-size: 14px;
+  line-height: 17px;
+  color: #000000;
+  padding: 0;
+  transition: all 0.3s linear;
+}
+
+.about-project__diagram-element_white {
+  padding: 0;
+  font-size: 14px;
+  line-height: 17px;
+  color: #FFFFFF;
+  background-color: #303030;
+  transition: all 0.3s linear;
+}
+
+@media screen and (max-width: 768px) {
+  .about-project__diagram {
+    grid-template-columns: 140px auto;
+  }
+
+  .about-project__table {
+    column-gap: 30px;
+    padding: 70px 0 93px 0;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .about-project__table {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .about-project {
+    padding: 70px 18px 70px 18px;
+  }
+
+  .about-project__diagram {
+    grid-template-columns: 100px auto;
+  }
+
+  .about-project__diagram-element {
+    font-size: 11px;
+    line-height: 13px;
+  }
+
+  .about-project__diagram-element_green {
+    height: 35px;
+  }
+
+  .about-project__table {
+    column-gap: 16px;
+    padding: 60px 0 60px 0;
+  }
+  
+  .about-project__table-header {
+    margin: 0;
+    font-size: 18px;
+    line-height: 22px;
+  }
+
+  .about-project__table-raw {
+    margin: 56px 0 0 0;
+  }
+
+  .about-project__table-raw:first-child {
+    margin: 0;
+  }
+  
+  .about-project__table-element {
+    padding-top: 16px;
+    font-size: 11px;
+    line-height: 16px;
+  }
+}

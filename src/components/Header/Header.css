@@ -1,0 +1,42 @@
+/*Основные стили блока*/
+.header {
+  width: 89.06%;
+  transition: width 0.7s ease;
+  box-sizing: border-box;
+}
+
+.header__container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.page__header_path_movie {
+  margin: 18px 0 88px 0;
+}
+
+.page__header_path_profile {
+  margin: 18px 0 92px 0;
+}
+
+.page__header_path_main {
+  margin: 18px 0 38px 0;
+}
+
+@media screen and (max-width: 768px) {
+  .header {
+    width: 92.19%;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .page__header_path_profile {
+    margin: 18px 0 79px 0;
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .header {
+    width: 93.75%;
+    padding: 0 0 14px 0;
+  }
+}

@@ -1,0 +1,63 @@
+.filter {
+  font-size: 14px;
+  line-height: 18px;
+  margin: 0 auto;
+  position: relative;
+  display: flex;
+  align-items: center;
+  color: #FFFFFF;
+}
+
+.filter_disabled {
+  display: none;
+}
+
+.filter__input-invisible {
+  position: relative;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
+.filter__input-visible {
+  margin-right: 12px;
+  display: inline-block;
+  width: 36px;
+  height: 20px;
+  background-color: #EBEBEB;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: all 0.4s ease-in-out;
+}
+
+.filter__input-visible::before {
+  position: relative;
+  left: 8px;
+  top: 6px;
+  display: block;
+  content: "";
+  height: 8px;
+  width: 8px;
+  background-color: #FFFFFF;
+  border-radius: 50%;
+  transition: all 0.4s ease-in-out;
+}
+
+.filter__input-invisible:checked + .filter__input-visible {
+  background-color: #2BE080;
+}
+
+.filter__input-invisible:checked + .filter__input-visible::before {
+  transform: translateX(16px);
+  background-color: #FFFFFF;
+}
+
+@media screen and (max-width: 500px) {
+  .filter {
+    font-size: 11px;
+  }
+
+  .filter__input-visible {
+    margin-right: 13px;
+  }
+}
