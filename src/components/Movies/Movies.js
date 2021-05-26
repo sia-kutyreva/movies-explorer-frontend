@@ -44,7 +44,7 @@ function Movies({
   }
 
   const checkArrayLength = () => {
-    let movieArrayLength = filteredMovies.length;
+    const movieArrayLength = filteredMovies.length;
     if (movieArrayLength === 0 ) {
       setShowMoreButton(false);
     } else if (movieArrayLength <= numberOfCards) {

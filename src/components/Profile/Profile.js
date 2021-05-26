@@ -9,13 +9,16 @@ function Profile({
   signOut,
   onUpdateProfile,
   setIsLoading,
-  })
-{
+  isProcessingRequest,
+  setIsProcessingRequest,
+}) {
+
   const currentUser = useContext(CurrentUserContext);
   const { values, handleChange, errors, isValid, setValues } = useFormWithValidation();
 
   function handleSubmit(e) {
     e.preventDefault();
+    setIsProcessingRequest(true);
     onUpdateProfile({
       name: values.name || currentUser.name,
       email: values.email || currentUser.email,
@@ -58,6 +61,7 @@ function Profile({
                     value={values.name || ''}
                     pattern="^[а-яёА-ЯЁa-zA-Z '.-]*$"
                     autoComplete='off'
+                    disabled={isProcessingRequest ? true : false}
                     required
                   />
                 </label>
@@ -71,6 +75,7 @@ function Profile({
                     placeholder={currentUser.email}
                     value={values.email  || ''}
                     autoComplete='off'
+                    disabled={isProcessingRequest ? true : false}
                     required
                   />
                 </label>
@@ -84,6 +89,7 @@ function Profile({
                           buttonText="Сохранить"
                           buttonClassName="button__form-page"
                           buttonType="submit"
+                          isDisabled={isProcessingRequest ? true : false}
                       />
                     </>) : (
                       <Button 

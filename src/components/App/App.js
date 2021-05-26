@@ -21,7 +21,10 @@ import { PAGE_WITH_HEADER,
   PAGE_WITH_FOOTER,
   MOVIES_API_BASE_URL,
   DEFAULT_MOVIE_IMAGE_URL,
-  DEFAULT_MOVIE_TRAILER_URL, 
+  DEFAULT_MOVIE_TRAILER_URL,
+  SHORT_FILM_DURATION,
+  PAGE_WITH_AUTH,
+  PAGE_WITHOUT_AUTH
 } from '../../utils/constants';
 import { CurrentUserContext } from '../../contexts/UserContext';
 import * as MainApi from '../../utils/MainApi';
@@ -30,6 +33,7 @@ import MoviesApi from '../../utils/MoviesApi'
 function App() {
   
   const [mobileMenu, setMobileMenu] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [loggedIn, setLoggedIn] = useState(false);
   const [notAction, setNotAction] = useState(true);
   const [isSavedArray, setIsSavedArray] = useState(false);
@@ -50,7 +54,7 @@ function App() {
   const [allMovies, setAllMovies] = useState([]);
   const [filteredSavedArray, setFilteredSavedArray] = useState([]);
 
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isProcessingRequest, setIsProcessingRequest] = useState(false);
 
   const [currentUser, setCurrentUser] = React.useState({
     name: "",
@@ -106,6 +110,7 @@ function App() {
       })
       .finally(() => {
         setIsLoading(false);
+        setIsProcessingRequest(false);
       })
   }
 
@@ -123,12 +128,15 @@ function App() {
       })
       .finally(() => {
         setIsLoading(false);
+        setIsProcessingRequest(false);
       })
   }
 
   function checkToken() {
     if (localStorage.getItem('jwt')) {
       setLoggedIn(true);
+      const pathToLoggedIn = PAGE_WITH_AUTH.includes(pathname) ? pathname : (pathname === '/' ? pathname : (PAGE_WITHOUT_AUTH.includes(pathname) ? '/' : 'notFound'));
+      history.push(pathToLoggedIn);
     }
   }
 
@@ -164,6 +172,7 @@ function App() {
         })
         .finally(() => {
           setIsLoading(false);
+          setIsProcessingRequest(false);
         })
     }
   }
@@ -224,7 +233,7 @@ function App() {
       const filterResult = [];
       moviesArray.forEach(element => {
         const keywordsFilter = element.nameRU.toLowerCase().includes(keywords.toLowerCase()) || element.nameEN.toLowerCase().includes(keywords.toLowerCase());
-        const durationFilter = short ? (element.duration <= 40) : (element.duration > 40);
+        const durationFilter = short ? (element.duration <= SHORT_FILM_DURATION) : (element.duration > SHORT_FILM_DURATION);
         if (keywordsFilter && durationFilter) {
           filterResult.push(element);
         }
@@ -239,6 +248,7 @@ function App() {
         setFilteredSavedArray(filterResult);
       } else {
         setFilteredMovies(filterResult);
+        localStorage.setItem('movies', JSON.stringify(filterResult));
       }
     } else if (!keywords) {
       if (pathname === '/movies') {
@@ -263,6 +273,7 @@ function App() {
           setFilteredSavedArray(filterResult);
         } else {
           setFilteredMovies(filterResult);
+          localStorage.setItem('movies', JSON.stringify(filterResult));
         }
       } else {
         setFilteredSavedArray(savedMovies);
@@ -315,9 +326,10 @@ function App() {
     checkToken();
     if (loggedIn) {
       if (localStorage.getItem('all-movies')) {
-        history.push('/movies');
         const movies = JSON.parse(localStorage.getItem('all-movies'));
+        const searchMovies = JSON.parse(localStorage.getItem('movies'));
         const savedMovies = JSON.parse(localStorage.getItem('saved-movies'));
+        setFilteredMovies(searchMovies);
         setSavedMovies(savedMovies);
         checkSavedMovies(movies, savedMovies);
         getUserProfile(localStorage.getItem('jwt'));
@@ -397,6 +409,8 @@ function App() {
                     onRegister={onRegister}
                     handleRegisterErrors={setRegisterErrors}
                     registerErrors={registerErrors}
+                    isProcessingRequest={isProcessingRequest}
+                    setIsProcessingRequest={setIsProcessingRequest}
                   />
                 )
               }
@@ -408,6 +422,8 @@ function App() {
                     onLogin={onLogin}
                     handleLoginErrors={setLoginErrors}
                     loginErrors={loginErrors}
+                    isProcessingRequest={isProcessingRequest}
+                    setIsProcessingRequest={setIsProcessingRequest}
                   />
                 )
               }
@@ -461,6 +477,8 @@ function App() {
               signOut={signOut}
               onUpdateProfile={onUpdateProfile}
               setIsLoading={setIsLoading}
+              isProcessingRequest={isProcessingRequest}
+              setIsProcessingRequest={setIsProcessingRequest}
             />
             
             <Route path="/notFound">

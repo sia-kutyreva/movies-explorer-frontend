@@ -7,18 +7,25 @@ function Register({
   onRegister,
   registerErrors,
   handleRegisterErrors,
+  isProcessingRequest,
+  setIsProcessingRequest,
 }) 
 {
-  const { values, handleChange, errors, isValid } = useFormWithValidation();
+  const { values, handleChange, errors, isValid, resetForm } = useFormWithValidation();
 
   const handleSubmit = (evt) => {
     evt.preventDefault();
     onRegister(values);
+    setIsProcessingRequest(true);
   }
 
   useEffect(()=> {
     handleRegisterErrors('');
   }, [values])
+
+  useEffect(()=> {
+    return resetForm();
+  }, [])
 
   return (
     <PageWithForm 
@@ -35,6 +42,7 @@ function Register({
       path="/signin"
       isValid={isValid}
       apiErrors={registerErrors}
+      isProcessingRequest={isProcessingRequest}
     >
       <fieldset className="form-page__fieldset">
         <label className="form-page__label">Имя</label>
@@ -48,6 +56,7 @@ function Register({
             onChange={handleChange}
             value={values.name || ""}
             pattern="^[а-яёА-ЯЁa-zA-Z '.-]*$"
+            disabled={isProcessingRequest ? true : false}
             required
         />
         <span className='form-page__input-error' id='name-input-error'>{errors.name || ''}</span>
@@ -59,6 +68,7 @@ function Register({
             autoComplete="off"
             onChange={handleChange}
             value={values.email || ""}
+            disabled={isProcessingRequest ? true : false}
             required
         />
         <span className='form-page__input-error' id='email-input-error'>{errors.email || ''}</span>
@@ -71,6 +81,7 @@ function Register({
             autoComplete="off"
             onChange={handleChange}
             value={values.password || ""}
+            disabled={isProcessingRequest ? true : false}
             required
         />
         <span className='form-page__input-error' id='password-input-error'>{errors.password || ''}</span>

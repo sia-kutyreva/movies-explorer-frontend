@@ -19,8 +19,11 @@ function PageWithForm({
   path,
   isValid,
   apiErrors,
-}) 
-{
+  isProcessingRequest,
+}) {
+
+  const disableButton = isValid ? (isProcessingRequest ? true : false) : false;
+
   return (
     <main className={`form-page form-page_${name}`}>
       <Logo />
@@ -32,7 +35,7 @@ function PageWithForm({
           buttonClassName={buttonClassName}
           type={buttonType}
           buttonText={buttonText}
-          isDisabled={!isValid}
+          isDisabled={disableButton}
         />
       </form>
       <h2 className={`form-page__${text}`}>{authText}<Link to={path} className={`form-page__${link}`}>{authLink}</Link></h2>

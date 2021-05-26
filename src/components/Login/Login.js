@@ -7,6 +7,8 @@ function Login({
   onLogin,
   handleLoginErrors,
   loginErrors,
+  isProcessingRequest,
+  setIsProcessingRequest,
 }) {
 
   const { values, handleChange, errors, isValid, resetForm } = useFormWithValidation();
@@ -14,12 +16,16 @@ function Login({
   const handleSubmit = (evt) => {
     evt.preventDefault();
     onLogin(values);
-    resetForm();
+    setIsProcessingRequest(true);
   }
 
   useEffect(()=> {
     handleLoginErrors('');
   }, [values])
+
+  useEffect(()=> {
+    return resetForm();
+  }, [])
 
   return (
     <PageWithForm 
@@ -36,6 +42,7 @@ function Login({
       path="/signup"
       isValid={isValid}
       apiErrors={loginErrors}
+      isProcessingRequest={isProcessingRequest}
     >
       <fieldset className="form-page__fieldset">
         <label className="form-page__label">E-mail</label>
@@ -46,6 +53,7 @@ function Login({
             autoComplete="off"
             onChange={handleChange}
             value={values.email || ""}
+            disabled={isProcessingRequest ? true : false}
             required
         />
         <span className='form-page__input-error form-page__input-error_active' id='email-input-error'>{errors.email}</span>
@@ -57,6 +65,7 @@ function Login({
             autoComplete="off"
             onChange={handleChange}
             value={values.password || ""}
+            disabled={isProcessingRequest ? true : false}
             required
         />
         <span className='form-page__input-error form-page__input-error_active' id='password-input-error'>{errors.password}</span>

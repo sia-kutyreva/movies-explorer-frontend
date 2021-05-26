@@ -42,7 +42,7 @@ function SavedMovies({
   }
 
   const checkArrayLength = () => {
-    let movieArrayLength = array.length;
+    const movieArrayLength = array.length;
     if (movieArrayLength === 0 ) {
       setShowMoreButton(false);
     } else if (movieArrayLength <= numberOfCards) {
