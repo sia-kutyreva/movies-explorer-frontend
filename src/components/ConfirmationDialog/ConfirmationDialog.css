@@ -1,0 +1,59 @@
+.confirm {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: rgba(31, 30, 30, 0.521);
+  opacity: 0;
+  visibility: hidden;
+  font-family: 'Inter', sans-serif;
+  font-style: normal;
+  transition: opacity 0.3s, visibility 0.3s;
+}
+
+.confirm_type_opend {
+  visibility: visible;
+  opacity: 1;
+}
+
+.confirm__grid {
+  width: 45%;
+  border-radius: 7px;
+  background-color: rgb(56, 56, 56);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.confirm__text {
+  color: white;
+  font-size: 18px;
+  line-height: 22px;
+  text-align: center;
+  margin: 40px 0 80px 0;
+  padding: 0;
+}
+
+.confirm__button {
+  border: none;
+  outline: none;
+  width: 75%;
+  background: #3DDC84;
+  border-radius: 3px;
+  color: white;
+  text-align: center;
+  padding: 7px 0 7px 0;
+  margin-bottom: 40px;
+  align-self: center;
+  opacity: 1;
+  transition: all 0.4s ease;
+}
+
+.confirm__button:hover {
+  opacity: 0.7;
+  cursor: pointer;
+}

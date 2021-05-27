@@ -56,7 +56,7 @@
 }
 
 .movies__button {
-  margin: 0 0 159px 0;
+  margin: auto 0;
 }
 
 .button_type_profile {
@@ -65,7 +65,7 @@
   font-size: 13px;
   line-height: 16px;
   text-align: center;
-  color: #FFFFFF
+  color: #FFFFFF;
 }
 
 .button_color_signout {
@@ -96,4 +96,18 @@
   line-height: 17px;
   text-align: center;
   color: #FFFFFF;
+}
+
+.button_type_disabled {
+  background: #F8F8F8;
+  color: #C2C2C2;
+}
+
+.button_type_profile_disabled {
+  color: #a5a5a5;
+  background: none;
+}
+
+.button_type_disabled:hover {
+  opacity: 1;
 }

@@ -5,11 +5,12 @@ function Button({
   buttonClassName,
   onClick,
   type,
-  buttonText
+  buttonText,
+  isDisabled = false,
   }) 
   {
     return (
-      <button className={`button ${buttonClassName}`} onClick={onClick} type={type}>{buttonText}</button>
+      <button className={`button ${buttonClassName} ${isDisabled ? 'button_type_disabled' : ''}`} onClick={onClick} type={type} disabled={isDisabled}>{buttonText}</button>
     );
 }
 

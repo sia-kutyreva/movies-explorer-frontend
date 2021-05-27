@@ -1,3 +1,15 @@
 .movies {
-  width: 89.50%;
+  width: 89.5%;
+  padding-bottom: 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.movie__search-fail {
+  font-size: 15px;
+  line-height: 18px;
+  color: #FFFFFF;
+  margin: 0 auto;
 }

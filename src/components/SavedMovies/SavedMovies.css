@@ -1,3 +1,15 @@
 .saved-movies {
-  width: 100%;
+  width: 89.5%;
+  padding-bottom: 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.saved-movies__search-fail {
+  font-size: 15px;
+  line-height: 18px;
+  color: #FFFFFF;
+  margin: 0 auto;
 }

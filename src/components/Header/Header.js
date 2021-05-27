@@ -17,7 +17,7 @@ function Header(props)
 
         <Logo />
         <Navigation 
-          loggedIn={true}
+          loggedIn={props.loggedIn}
           mobileMenu={props.mobileMenu}
           clickMenu={props.clickMenu} 
         />
